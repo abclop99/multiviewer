@@ -11,9 +11,14 @@
   }: {
 
     packages.x86_64-linux = {
-      hello = (import ./default.nix) {pkgs = nixpkgs.legacyPackages.x86_64-linux; };
+      multiviewer = (import ./default.nix) {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+      };
 
-      default = self.packages.x86_64-linux.hello;
+      default = self.packages.x86_64-linux.multiviewer;
     };
 
   };
