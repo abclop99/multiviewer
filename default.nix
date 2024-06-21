@@ -2,7 +2,7 @@
   pkgs,
 }:
 let
-  id = "168727397";
+  id = "173944040";
 in
 pkgs.stdenvNoCC.mkDerivation rec {
   pname = "multiviewer-for-f1";
@@ -10,7 +10,7 @@ pkgs.stdenvNoCC.mkDerivation rec {
 
   src = pkgs.fetchurl {
     url = "https://releases.multiviewer.app/download/${id}/MultiViewer.for.F1-linux-x64-${version}.zip";
-    sha256 = "sha256-Q8n7qsmQQqcItNls4GbLePu3RkjX1QbF2VX13PapJ+8=";
+    sha256 = "sha256-LENjd9OFD7Tcy7CO7sFRvslOzitgmMVK3crPG8ViYBE=";
   };
 
   desktop_file = pkgs.fetchurl {
