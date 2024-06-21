@@ -6,7 +6,7 @@ let
 in
 pkgs.stdenvNoCC.mkDerivation rec {
   pname = "multiviewer-for-f1";
-  version = "1.32.1";
+  version = "1.33.1";
 
   src = pkgs.fetchurl {
     url = "https://releases.multiviewer.app/download/${id}/MultiViewer.for.F1-linux-x64-${version}.zip";
