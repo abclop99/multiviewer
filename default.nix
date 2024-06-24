@@ -2,15 +2,15 @@
   pkgs,
 }:
 let
-  id = "173944040";
+  v = import ./version.nix;
 in
 pkgs.stdenvNoCC.mkDerivation rec {
   pname = "multiviewer-for-f1";
-  version = "1.33.1";
+  version = v.version;
 
   src = pkgs.fetchurl {
-    url = "https://releases.multiviewer.app/download/${id}/MultiViewer.for.F1-linux-x64-${version}.zip";
-    sha256 = "sha256-LENjd9OFD7Tcy7CO7sFRvslOzitgmMVK3crPG8ViYBE=";
+    url = "https://releases.multiviewer.app/download/${v.id}/MultiViewer.for.F1-linux-x64-${version}.zip";
+    sha256 = v.hash;
   };
 
   desktop_file = pkgs.fetchurl {
