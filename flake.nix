@@ -1,5 +1,5 @@
 {
-  description = "Unofficial desktop client for F1 TV";
+  description = "Unofficial desktop client for F1 TV®";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
