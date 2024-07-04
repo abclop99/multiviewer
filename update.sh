@@ -8,7 +8,7 @@ version=$(echo "${PKGBUILD}" | grep "pkgver=" - | awk -F '=' '{ print $2 }' -)
 id=$(echo "${PKGBUILD}" | grep "_build=" - | awk -F '=' '{ print $2 }' -)
 # Extract and convert the hash
 hash=$(echo "${PKGBUILD}" | grep "sha256sums=" - | awk -F "'" '{ print $2 }')
-hash=$( nix-hash --type sha256 --to-sri ${hash} )
+hash=sha256-$( echo ${hash} | xxd -r -p | base64 )
 
 # Format as nix expression
 nix_exp=$(cat <<EOF
@@ -20,4 +20,5 @@ nix_exp=$(cat <<EOF
 EOF
 )
 
+>&2 echo "${nix_exp}"
 echo "${nix_exp}" > version.nix
