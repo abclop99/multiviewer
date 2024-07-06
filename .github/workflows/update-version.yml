@@ -2,8 +2,8 @@ name: Update version.nix
 on:
   workflow_dispatch: # allows manual triggering
   schedule:
-    # Every 6 hrs Feb-Dec Fri-Sun
-    - cron: '0 0/6 * 2-11 5,6,0'
+    # Every hour Feb-Dec Fri-Sun
+    - cron: '0 */1 * 2-11 5,6,0'
     # Once a week Fridays Dec-Jan
     - cron: '0 0 * 1,12 FRI'
 
