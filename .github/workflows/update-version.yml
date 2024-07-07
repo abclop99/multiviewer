@@ -31,7 +31,7 @@ jobs:
             Automated changes by [create-pull-request](https://github.com/peter-evans/create-pull-request) GitHub action
 
             ```
-              {{ steps.version.outputs.file }}
+              ${{ steps.version.outputs.file }}
             ```
           branch: actions/update_version
           labels: |                  # Labels to be set on the PR
