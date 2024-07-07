@@ -17,12 +17,22 @@ jobs:
         run: ./update.sh
       - name: Extract version info to output
         id: version
-        run: echo version=$(cat version.nix | grep "version=" | awk -F '"' '{print$2}' -) > $GITHUB_OUTPUT
+        run: |
+          cat version.nix | grep "=" | sed 's/[ ";]//g' >> $GITHUB_OUTPUT
+          echo "file<<EOF"                              >> $GITHUB_OUTPUT
+          echo "$(cat version.nix)"                     >> $GITHUB_OUTPUT
+          echo "EOF"                                    >> $GITHUB_OUTPUT
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
         with:
-          title: Update version.nix
+          title: Update to version ${{ steps.version.outputs.version }}
           commit-message: Update to version ${{ steps.version.outputs.version }}
+          body: |
+            Automated changes by [create-pull-request](https://github.com/peter-evans/create-pull-request) GitHub action
+
+            ```
+              {{ steps.version.outputs.file }}
+            ```
           branch: actions/update_version
           labels: |                  # Labels to be set on the PR
             updates
