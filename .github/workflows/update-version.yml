@@ -4,6 +4,8 @@ on:
   schedule:
     # Every hour Feb-Dec Fri-Sun
     - cron: '0 */1 * 2-11 5,6,0'
+    # Once / day Feb-Dec other days
+    - cron: '0 0 * 2-11 1-4'
     # Once a week Fridays Dec-Jan
     - cron: '0 0 * 1,12 FRI'
 
