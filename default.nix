@@ -5,7 +5,7 @@ let
   v = import ./version.nix;
 in
 pkgs.stdenvNoCC.mkDerivation rec {
-  pname = "multiviewer-for-f1";
+  pname = "multiviewer";
   version = v.version;
 
   src = pkgs.fetchurl {
@@ -73,15 +73,15 @@ pkgs.stdenvNoCC.mkDerivation rec {
     cp -t $out/share/applications $desktop_file
 
     # Install the application itself
-    mkdir -p $out/share/multiviewer-for-f1
-    mv -t $out/share/multiviewer-for-f1 MultiViewer\ for\ F1-linux-x64/*
+    mkdir -p $out/share/multiviewer
+    mv -t $out/share/multiviewer MultiViewer\ for\ F1-linux-x64/*
 
     # Install icon
     mkdir -p $out/share/pixmaps
-    cp -T $out/share/multiviewer-for-f1/resources/app/.webpack/main/88a36af69fdc182ce561a66de78de7b1.png $out/share/pixmaps/f1multiviewer.png
+    cp -T $out/share/multiviewer/resources/app/.webpack/main/88a36af69fdc182ce561a66de78de7b1.png $out/share/pixmaps/f1multiviewer.png
 
     # Install bin
-    makeWrapper "$out/share/multiviewer-for-f1/MultiViewer for F1" $out/bin/multiviewer-for-f1 \
+    makeWrapper "$out/share/multiviewer/MultiViewer for F1" $out/bin/multiviewer \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland --enable-features=WaylandWindowDecorations}}" \
       --prefix LD_LIBRARY_PATH : "${pkgs.lib.makeLibraryPath [ pkgs.libudev0-shim ]}:\"$out/share/Multiviewer for F1\""
 
@@ -95,6 +95,6 @@ pkgs.stdenvNoCC.mkDerivation rec {
     license = licenses.unfree;
     maintainers = with maintainers; [ abclop99 ];
     platforms = [ "x86_64-linux" ];
-    mainProgram = "multiviewer-for-f1";
+    mainProgram = "multiviewer";
   };
 }
