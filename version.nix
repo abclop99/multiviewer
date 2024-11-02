@@ -1,5 +1,5 @@
 {
-  version="1.36.1";
-  id="192684464";
-  hash="sha256-fS/sdFbLs14a3PQQRb0njAvA04OtxVvfCCLd1ycDRCc=";
+  version="1.36.2";
+  id="203624822";
+  hash="sha256-JQiq6yn5LJ3cPI0kLN1agvSBcr1TKx7WLkjP8zVNxm4=";
 }
